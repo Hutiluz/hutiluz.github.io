@@ -101,23 +101,37 @@
         header {
             background-color: #021D32;
             color: #f8f0ee;
-            padding: 20px; /* Tilaa sisällön ympärille */
-            margin: 20px auto; /* Keskittää taustalaatikon sivun keskelle */
+            padding: 20px;
+            margin: 20px auto;
             border-radius: 5px;
             box-shadow: 0 10px 5px rgba(0, 0, 0, 0.1);
             display: flex;
-            justify-content: center; /* Keskittää sisällön vaakasuunnassa */
-            align-items: center; /* Keskittää sisällön pystysuunnassa */
-            width: 500px; /* Määrittää laatikon koon sisällön mukaan */
-            flex-direction: column; /* Asettaa kuvan ja tekstin päällekkäin */
+            justify-content: center;
+            align-items: center;
+            width: 100%; /* Skaalautuu näytön leveyden mukaan */
+            max-width: 500px; /* Maksimileveys suuremmille näytöille */
+            flex-direction: column;
+            box-sizing: border-box; /* Sisällyttää padding laskentaan */
+            position: relative; /* Tarvitaan absoluuttiselle asemoinnille */
         }
     
     /* Profiilikuva */
         .profiilikuva {
-            width: 400px;
-            height: 550px;
+            width: 100%;
+            max-width: 400px; /* Maksimileveys suuremmille näytöille */
+            height: auto; /* Automaattinen korkeus oikeilla mittasuhteilla */
             border-radius: 50%;
             margin-bottom: 20px;
+            object-fit: cover;
+        }
+
+        .info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px; /* Välit kontaktitietojen välillä */
+            flex: 1; /* Joustava leveys tilan täyttämiseksi */
+            max-width: 100%; /* Varmistaa, että info ei ylitä leveyttä */
+            box-sizing: border-box; /* Sama box-sizing sääntö */
         }
         
     /* Etu -ja sukunimi */
@@ -140,7 +154,12 @@
         .yhteystieto {
             display: flex;
             align-items: center;
-            gap: 10px; /* Tilaa kuvakkeen ja tekstin välillä */
+            gap: 20px; /* Tilaa profiilikuvan ja yhteystietojen välillä */
+            flex-wrap: wrap; /* Sallii rivinvaihdon pienemmillä näytöillä */
+            width: 100%; /* Vie koko leveys */
+            max-width: 100vw; /* Estää ylivuodon näytön leveydeltä */
+            box-sizing: border-box; /* Sisällyttää padding ja border laskentaan */
+            padding: 10px; /* Tarvittaessa lisää padding */
         }
 
         .yhteystieto img {
@@ -154,12 +173,14 @@
         }
 
         .linkedin {
-            position: right;
+            position: absolute;
+            bottom: 10px; /* Sijoitetaan alareunaan */
+            right: 20px;  /* Sijoitetaan oikeaan reunaan */
         }
 
         .linkedin img {
-            width: 32px;
-            height: 32px;
+            width: 40px;
+            height: 40px;
         }
 
 /* Tausta */
@@ -347,7 +368,6 @@
     /* Asettelu */
         .skill-bar {
             display: flex;
-            align-items: justify; 
             justify-content: space-between; 
         }
         
@@ -362,7 +382,6 @@
             height: 20px; 
             background-color: #cec9c9; 
             position: relative;
-            margin-left: justify; 
         }
   
     /* Taitotaso */
@@ -392,6 +411,33 @@
             background-color: #99b7c7be;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
+            text-align: center; /* Keskittää kaiken kortin sisällä */
+        }
+
+        .suosittelija .yhteystieto {
+            display: flex;
+            justify-content: center; /* Keskittää rivin sisällön */
+            align-items: center;
+            gap: 10px; /* Lisää tilaa kuvakkeen ja tekstin väliin */
+            margin: 10px 0; /* Lisää tilaa jokaisen yhteystiedon väliin */
+        }
+        
+        .suosittelija .yhteystieto a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
+        }
+        
+        .suosittelija .yhteystieto img {
+            vertical-align: middle; /* Kuvake linjassa linkin kanssa */
+            width: 25px;
+            height: 25px;
+        }
+        
+        .suosittelija .yhteystieto a {
+            text-decoration: none;
+            color: black;
+            font-size: 16px;
         }
 
     /* Suosittelijoiden kuvat keskitettynä */
@@ -426,7 +472,7 @@
     }
 
 /* Skaalautuminen mobiiliin */
-    @media screen and (max-width: 1200px) {
+    @media screen and (max-width: 1000px) {
 
     /*Yleinen skaalautuminen*/
         .main {
@@ -458,6 +504,27 @@
             padding-top: 8px; /* Linkkien välinen etäisyys */
             padding-bottom: 8px; 
         }
+
+    /*Profiili*/
+    .yhteystiedot {
+        flex-direction: column;
+        align-items: center; /* Keskittää sisällön pienillä näytöillä */
+        padding: 0; /* Poistaa ylimääräisen tilan mobiilissa */
+    }
+    .profiilikuva {
+        width: 80%; /* Skaalautuu mobiilissa näytön mukaan */
+        max-width: 200px; /* Pienempi maksimi mobiilissa */
+        height: auto; /* Korkeus säilyttää mittasuhteet */
+    }
+    .info {
+        align-items: center;
+        text-align: center; /* Keskittää tekstin mobiilissa */
+    }
+
+    header {
+        width: 90%; /* Skaalautuu pienille näytöille */
+        max-width: 90%; /* Estää ylivuodon mobiilissa */
+    }
 
     /* Työ ja koulutus */
         /*Asettaa päällekkäin mobiilissa*/
