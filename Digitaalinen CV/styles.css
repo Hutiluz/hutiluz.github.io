@@ -19,7 +19,7 @@
         position: fixed; /* Kiinteä sijainti */
         top: 20px; /* Sijoitettu sivun yläosaan */
         left: 20px; /* Sijoitettu vasempaan reunaan */
-        z-index: 2; /* Näytetään päällimmäisenä */
+        z-index: 20; /* Näytetään päällimmäisenä */
     }
 
     .menu-toggle .bar {
@@ -41,10 +41,12 @@
         text-decoration: none;
         color: white; /* Linkkitekstin väri */
         font-size: 20px; /* Tekstin koko */
+        z-index: 100;
     }
     
     .sidenav a img {
         margin-right: 10px; /* Lisää väliä kuvakkeen ja tekstin väliin */
+        z-index: 20;
     }
     
     .sidenav {
@@ -55,6 +57,7 @@
         top: 0;
         left: 0;
         padding-top: 20px;
+        z-index: 10; /* Suurempi z-index kuin headerilla */
     }
 
     /* Teksti hoveratessa */ 
@@ -83,6 +86,7 @@
         color: white;
         padding: 10px 15px;
         border: none;
+        z-index: 100;
         }
       
     /*Hampurilaisvalikko hoveratessa*/
@@ -113,6 +117,7 @@
             flex-direction: column;
             box-sizing: border-box; /* Sisällyttää padding laskentaan */
             position: relative; /* Tarvitaan absoluuttiselle asemoinnille */
+            z-index: 1;
         }
     
     /* Profiilikuva */
@@ -329,6 +334,7 @@
         position: relative;
         margin-right: 10px;
         overflow: hidden;
+        z-index: 1;
         }
   
     /* Asteikon viivat */
@@ -369,6 +375,7 @@
         .skill-bar {
             display: flex;
             justify-content: space-between; 
+            z-index: 1;
         }
         
     /* Lisää tilaa tekstin ja palkin väliin */
@@ -382,12 +389,14 @@
             height: 20px; 
             background-color: #cec9c9; 
             position: relative;
+            z-index: 1;
         }
   
     /* Taitotaso */
         .skill-level {
             font-size: 14px;
-            color: #021D32; 
+            color: #021D32;
+            z-index: 1; 
         }
 
 /* Suosittelijat */
